@@ -7,6 +7,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -22,6 +25,7 @@ public class Estado implements Serializable {
 	private Integer Id;
 	private String nome;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "estado")
 	private List<Cidade> cidades = new ArrayList<>();
 	
