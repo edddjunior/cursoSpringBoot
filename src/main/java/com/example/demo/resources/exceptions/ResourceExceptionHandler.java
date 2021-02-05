@@ -1,9 +1,8 @@
 package com.example.demo.resources.exceptions;
 
-import java.util.Iterator;
-
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -40,6 +39,16 @@ public class ResourceExceptionHandler {
 			err.addError(x.getField(), x.getDefaultMessage());
 		}
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+	}
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public ResponseEntity<StandardError> dataIntegretyViolationException(DataIntegrityViolationException e, HttpServletRequest request){
+	    ValidationError err = new ValidationError(HttpStatus.BAD_REQUEST.value(),e.getMessage(),System.currentTimeMillis());
+	    if(e.getMessage().contains("EMAIL")){
+	        err.setMsg("Erro de validação.");
+	        err.addError("email","Email já existe");
+	    }
+	    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 	}
 	
 }
