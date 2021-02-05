@@ -21,14 +21,14 @@ public enum TipoCliente {
 		return descricao;
 	}
 	
-	public static String ToEnum(Integer cod) {
+	public static TipoCliente ToEnum(Integer cod) {
 		if (cod == null) {
 			return null;
 		}
 		
 		for (TipoCliente x : TipoCliente.values()) {
 			if (cod.equals(x.getCod())) {
-				return x.getDescricao();
+				return x;
 			}
 		}
 		

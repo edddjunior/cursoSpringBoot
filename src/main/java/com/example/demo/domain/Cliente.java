@@ -89,7 +89,7 @@ public class Cliente implements Serializable{
 		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
-	public String getTipo() {
+	public TipoCliente getTipo() {
 		return TipoCliente.ToEnum(tipo);
 	}
 
