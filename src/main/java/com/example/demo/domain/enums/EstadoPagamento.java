@@ -22,14 +22,14 @@ public enum EstadoPagamento {
 		return descricao;
 	}
 	
-	public static String ToEnum(Integer cod) {
+	public static EstadoPagamento ToEnum(Integer cod) {
 		if (cod == null) {
 			return null;
 		}
 		
 		for (EstadoPagamento x : EstadoPagamento.values()) {
 			if (cod.equals(x.getCod())) {
-				return x.getDescricao();
+				return x;
 			}
 		}
 		

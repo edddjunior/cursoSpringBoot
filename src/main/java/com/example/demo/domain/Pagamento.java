@@ -51,7 +51,7 @@ public abstract class Pagamento implements Serializable {
 		this.id = id;
 	}
 
-	public String getEstado() {
+	public EstadoPagamento getEstado() {
 		return EstadoPagamento.ToEnum(estado);
 	}
 
