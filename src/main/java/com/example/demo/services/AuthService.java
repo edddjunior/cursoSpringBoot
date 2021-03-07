@@ -22,8 +22,7 @@ public class AuthService {
 	@Autowired
 	private EmailService emailService;
 	
-	@Autowired
-	private Random rand = new Random();
+	private Random random = new Random();
 	
 	public void sendNewPassword(String email) {
 		
@@ -46,15 +45,15 @@ public class AuthService {
 	}
 
 	private char randomChar() {
-		int opt = rand.nextInt(3);
+		int opt = random.nextInt(3);
 		if (opt == 0) { // gera um dígito
-			return (char) (rand.nextInt(10) + 48);
+			return (char) (random.nextInt(10) + 48);
 		} 
 		else if (opt == 1) { // gera uma letra maiúscula
-			return (char) (rand.nextInt(26) + 65);
+			return (char) (random.nextInt(26) + 65);
 		} 
 		else if (opt == 2) { // gera uma letra minuscula 
-			return (char) (rand.nextInt(26) + 97);
+			return (char) (random.nextInt(26) + 97);
 		}
 		return 0;
 	}

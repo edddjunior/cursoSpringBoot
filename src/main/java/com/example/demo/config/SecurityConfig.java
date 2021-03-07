@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	private JWTUtil jwtUtil;
 
 	private static final String[] PUBLIC_MATCHERS = {
-		"/h2-console/**",
+		"/h2-console/**"
 	};
 	
 	private static final String[] PUBLIC_MATCHERS_GET = {
@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 			.antMatchers(PUBLIC_MATCHERS).permitAll()
 			.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
-			.antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_POST).permitAll()
+			.antMatchers(HttpMethod.POST, PUBLIC_MATCHERS_POST).permitAll()
 			.anyRequest().authenticated();
 		
 		JWTAuthenticationFilter authenticationFilter = new JWTAuthenticationFilter(authenticationManager(), jwtUtil);

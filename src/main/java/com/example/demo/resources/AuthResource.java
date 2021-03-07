@@ -26,7 +26,7 @@ public class AuthResource {
 	@Autowired
 	private AuthService authService;
 
-	@RequestMapping(value = "refresh-token", method = RequestMethod.POST)
+	@RequestMapping(value = "/refresh-token", method = RequestMethod.POST)
 	public ResponseEntity<Void> refreshToken(HttpServletResponse response) {
 		User user = UserService.authenticated();
 		String token = jwtUtil.generateToken(user.getUsername());
@@ -34,7 +34,7 @@ public class AuthResource {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(value = "forgot", method = RequestMethod.POST)
+	@RequestMapping(value = "/forgot", method = RequestMethod.POST)
 	public ResponseEntity<Void> forgotPassword(@Valid @RequestBody EmailDTO objdDto) {
 		authService.sendNewPassword(objdDto.getEmail());
 		return ResponseEntity.noContent().build();
